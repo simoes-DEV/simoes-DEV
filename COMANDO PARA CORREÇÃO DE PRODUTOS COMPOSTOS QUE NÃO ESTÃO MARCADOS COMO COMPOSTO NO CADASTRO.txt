@@ -1,0 +1,12 @@
+/* Selecionando produtos que estão na tabela componente, porém no cadastro do produto não está marcado como composto ('S') */
+
+
+select * from produto where procod in (select procod from componente)
+and procomp='N'
+
+-----------------------------------------------
+
+/* Fazendo a marcação para Composto nos produtos que estão na tabela componente porém no cadastro do produto estão como não composto ('N') */
+
+update produto set procomp='S' where procod in (select procod from componente)
+and procomp='N'

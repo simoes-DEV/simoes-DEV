@@ -1,0 +1,17 @@
+select item_nota_fiscal.procod, ncm.ncmcod, ncm.ncmdes,
+item_nota_fiscal.infprodes
+
+from item_nota_fiscal inner join ncm on
+
+item_nota_fiscal.infncm not in
+(select ncmcod from ncm)
+
+
+/* ESTE COMANDO É PARA ORDENAR ALFABETICAMENTE PELA DESCRIÇÃO E TAMBÉM FILTRANDO POR UM PEDAÇO DA DESCRIÇÃO */
+
+select produto.procod, produto.proncm,produto.prodes
+
+from produto where produto.proncm
+not in(select ncmcod from ncm)
+and produto.prodes like '%ABS ALW%'
+order by 3

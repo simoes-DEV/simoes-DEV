@@ -1,0 +1,7 @@
+/* COMANDO PARA FAZER UPDATE ONDE O PRODUTO TENHA O PEDAÇO DA DESCRIÇÃO E TAMBÉM SE O CÓDIGO DO NCM QUE ESTÁ NO PRODUTO NÃO ESTÁ NA TABELA NCM */
+
+update produto set proncm = 96190000
+where prodes like '%ABS ALW%'
+
+and produto.proncm
+not in(select ncmcod from ncm)

@@ -1,0 +1,11 @@
+PROCEDIMENTO COMEÇA COM O SELECT DE QUAL A DESCRIÇÃO DO PRODUTO, QUAL O NCM VINCULADO E O NOME DO PRODUTO
+
+select INFPRODES, procod, infncm from item_nota_fiscal where nfsctr=4040 and infseq=23
+
+begin transaction
+
+update ITEM_NOTA_FISCAL set infncm = '85395000' where nfsctr=4040 and infseq=23
+
+update produto set proncm='85395000' where procod='07898324237768'
+
+commit

@@ -1,0 +1,13 @@
+19142
+
+-- verificar documentos pendentes no banco
+-- stautfiscal: 5 = pendente de envio, 6 = erro de regra de negocio, 15 = aguardando retorno sefaz
+SELECT doc.iddocumentoecf, doc.dtmovimento, doc.stautfiscal, pdv.numero pdvnum,
+       df.dthrstatus, df.status, df.statusretorno, df.chaveconsulta, df.serie, df.numero
+  FROM docautfiscal df
+ RIGHT JOIN documentoecf doc ON iddocumentoecf = iddocautfiscal
+ RIGHT JOIN pdv USING(idpdv)
+ WHERE stautfiscal IN (5)
+   AND status = 216 -- codigo da rejeição
+   -- AND dtmovimento BETWEEN '2021-03-01' AND '2021-03-18' -- periodo especifico (AAAA-MM-DD)
+ ORDER BY dtmovimento;
