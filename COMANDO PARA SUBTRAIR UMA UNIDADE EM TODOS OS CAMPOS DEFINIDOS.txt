@@ -1,0 +1,2 @@
+update planopag set planumpar = planumpar -1
+where plaintpri = 0 and placod != 1
